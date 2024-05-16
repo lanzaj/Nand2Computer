@@ -1,5 +1,5 @@
 # NAND2COMPUTER
 My own computer architecture and assembly language
 
-![](./leg.webp)
+![](./my_8bit_computer.webp)
 
