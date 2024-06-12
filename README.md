@@ -1,14 +1,14 @@
 # Nand2Computer [WIP]
 My own computer architecture and assembly language.
 
-![](./my_8bit_computer.webp)
+![](img/my_8bit_computer.webp)
 
 ## About this project
 
-(Turing complete)[] is an educational game
+[Turing complete](https://turingcomplete.game) is an educational game about computer science.
 
 ## Instructions
-| Code | Binary | Assembly | Instruction |
+| Opcode | Binary | Assembly | Instruction |
 |---|---|---|---|
 | 0 | xx00 0000 | add \<arg1> \<arg2> \<dest> | dest = arg1 + arg2 |
 | 1 | xx00 0001 | minus \<arg1> \<arg2> \<dest> | dest = arg1 - arg2 |
@@ -23,7 +23,7 @@ My own computer architecture and assembly language.
 | 18 | xx01 0010 | inc \<arg1> \<ignored> \<dest> | dest = arg1 + 1 |
 | 19 | xx01 0011 | call \<function> | function() |
 | 20 | xx01 0100 | ret | return |
-| 21 | xx01 0101 | jump \<address> | jump address |
+| 21 | xx01 0101 | jump \<address> | jump(address) |
 | 22 | xx01 0110 | shl \<arg1> \<arg2> \<dest> | dest = arg1 << arg2 |
 | 23 | xx01 0111 | shr \<arg1> \<arg2> \<dest> | dest = arg1 >> arg2 |
 | 24 | xx01 1000 | pop \<ignored> \<ignored> \<dest> | dest = pop() |
@@ -36,6 +36,7 @@ My own computer architecture and assembly language.
 | 37 | xx10 0101 | jsupe \<arg1> \<arg2> \<address> | if (arg1 >= arg2) { jump(address) } |
 
 ## Source / Destination
+
 | Code | Binary | Assembly | Source / Destination |
 |---|---|---|---|
 | 0 | 0000 0000 | reg0 | register 0 |
@@ -47,3 +48,5 @@ My own computer architecture and assembly language.
 | 6 | 0000 0110 | addr | instruction pointer |
 | 7 | 0000 0111 | stdin / stdout | input / output |
 | 8 | 0000 1000 | ram | ram[ramIndex] |
+
+<img src="img/register_annotated.PNG" height="400">
