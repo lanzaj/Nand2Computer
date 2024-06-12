@@ -34,3 +34,16 @@ My own computer architecture and assembly language.
 | 35 | xx10 0011 | jinfe \<arg1> \<arg2> \<address> | if (arg1 <= arg2) { jump(address) } |
 | 36 | xx10 0100 | jsup \<arg1> \<arg2> \<address> | if (arg1 > arg2) { jump(address) } |
 | 37 | xx10 0101 | jsupe \<arg1> \<arg2> \<address> | if (arg1 >= arg2) { jump(address) } |
+
+## Source / Destination
+| Code | Binary | Assembly | Source / Destination |
+|---|---|---|---|
+| 0 | 0000 0000 | reg0 | register 0 |
+| 1 | 0000 0001 | reg1 | register 1 |
+| 2 | 0000 0010 | reg2 | register 2 |
+| 3 | 0000 0011 | reg3 | register 3 |
+| 4 | 0000 0100 | reg4 | register 4 |
+| 5 | 0000 0101 | ramIndex | index of ram |
+| 6 | 0000 0110 | addr | instruction pointer |
+| 7 | 0000 0111 | stdin / stdout | input / output |
+| 8 | 0000 1000 | ram | ram[ramIndex] |
