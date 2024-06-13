@@ -268,5 +268,7 @@ ret
 ```
 
 ### Decimal code in memory
+
 The exact same code in decimal: 
+
 <img src="img/hanoi_memory.PNG" height="400">
