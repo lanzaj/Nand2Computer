@@ -186,16 +186,18 @@ true | 1 | boolean
 #### Thanks to my computer, I can solve the tower of hanoi problem :
 
 The first 4 inputs will give you the following in order :
-disk_nr - The highest disk number in the pile (2 to 4)
-source - Which location number to move from
-destination - Where to move the pile to
-spare - the 3rd spot that is neither the source nor the destination
+- disk_nr - The highest disk number in the pile (2 to 4)
+- source - Which location number to move from
+- destination - Where to move the pile to
+- spare - the 3rd spot that is neither the source nor the destination
+
+
 
 Control the crane with the followin outputs : 
-0 - Move the magnet to spot 0
-1 - Move the magnet to spot 1
-2 - Move the magnet to spot 2
-5 - Toggle the magnet on or off
+- 0 - Move the magnet to spot 0
+- 1 - Move the magnet to spot 1
+- 2 - Move the magnet to spot 2
+- 5 - Toggle the magnet on or off
 
 <img src="img/hanoi.gif" height="400">
 
