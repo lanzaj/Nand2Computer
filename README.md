@@ -55,6 +55,7 @@ The next cycle:
 
 ### Stack
 It is possible to fill the stack using the `push` instruction and to empty it using the `pop` instruction. The stack is used to save the instruction pointer during a function `call`.
+
 <img src="img/stack.webp">
 
 ### Arithmetic logic unit (ALU)
@@ -150,8 +151,9 @@ add+int1+int2 1 2 reg0
 
 special instruction | details
 ---|---
-`call <function>` | push in the stack the value of the current instruction pointer and jump to the address of the function
-`ret` | pop the value of the instruction pointer when the funcion was called and jump to it
+`call <function>` | `push` in the stack the value of the current instruction pointer and `jump` to the address of the function
+`ret` | `pop` the value of the instruction pointer when the function was called and jump to the next instruction
+
 ### Source / Destination
 There are 9 different sources or destinations possible :
 | Code | Binary | Assembly | Source / Destination |
@@ -181,7 +183,7 @@ true | 1 | boolean
 
 ## Solving Tower of Hanoi
 
-#### Thanks to my computer, I can solve the following problem :
+#### Thanks to my computer, I can solve the tower of hanoi problem :
 
 The first 4 inputs will give you the following in order :
 disk_nr - The highest disk number in the pile (2 to 4)
