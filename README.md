@@ -24,8 +24,8 @@ I am curently ranked [251/85k](https://turingcomplete.game/leaderboard) on the l
    - [Source / Destination](#source--destination)
    - [Additional assembly keyword](#additional-assembly-keyword)
 3. [Solving Tower of Hanoi](#solving-tower-of-hanoi)
-   - [Decimal code in memory](#decimal-code-in-memory)
    - [Assembly code](#assembly-code)
+   - [Decimal code in memory](#decimal-code-in-memory)
 
 ## My architecture
 <img src="img/circuit_annotated.PNG">
@@ -191,9 +191,6 @@ Control the crane with the followin outputs :
 
 <img src="img/hanoi.gif" height="400">
 
-### Decimal code in memory
-<img src="img/hanoi_memory.PNG" height="400">
-
 ### Assembly code
 
 You can find bellow the complete assembly code. I used two syntactic sugar `const` and `label`.
@@ -259,3 +256,7 @@ label swap_reserve_source
     mov swap null src
 ret
 ```
+
+### Decimal code in memory
+The exact same code in decimal: 
+<img src="img/hanoi_memory.PNG" height="400">
