@@ -7,19 +7,11 @@ My own computer architecture and assembly language.
 ## About this project
 
 [Turing complete](https://turingcomplete.game) is an educational game focused on computer science. You begin with NAND gates and progressively build other gates like OR, AND, NOT, XOR, etc. Eventually, you create components and, ultimately, a Turing complete architecture with its own assembly language.
-I am curently ranked [251/85k](https://turingcomplete.game/leaderboard) on the leaderboard of Turing complete.
+I am curently ranked [251/85k](https://turingcomplete.game/leaderboard) on the leaderboard of Turing complete. [My turing complete profile](https://turingcomplete.game/profile/101858).
 
 ## My architecture
 <img src="img/circuit_annotated.PNG">
 
-color | purpose
----|---
-pink | opcode
-orange | arg1
-yellow | arg2
-green | dest
-violet | result value
-cyan | instruction pointer
 
 ## My assembly
 
