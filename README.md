@@ -6,7 +6,7 @@ My own computer architecture and assembly language.
 
 ## About this project
 
-[Turing complete](https://turingcomplete.game) is an educational game about computer science. You start with NAND gates, you build other gates like OR, AND, NOT, XOR... Then components and finally a turing complete architecture with its own assembly.
+[Turing complete](https://turingcomplete.game) is an educational game focused on computer science. You begin with NAND gates and progressively build other gates like OR, AND, NOT, XOR, etc. Eventually, you create components and, ultimately, a Turing complete architecture with its own assembly language.
 I am curently ranked [251/85k](https://turingcomplete.game/leaderboard) on the leaderboard of Turing complete.
 
 ## My architecture
@@ -44,8 +44,12 @@ To simplify programming, the compiler will recognize a list of keywords and repl
 ```asm
 add reg1 reg2 reg3
 ```
+This instruction in the game text editor and its decimal value in memory :
+<img src="img/simple_instruction.webp">
 
-Here is the list of opcodes :
+### Opcodes
+
+The complete list of opcodes :
 
 | Opcode | Binary | Assembly | Instruction |
 |---|---|---|---|
@@ -74,12 +78,6 @@ Here is the list of opcodes :
 | 36 | xx10 0100 | jsup \<arg1> \<arg2> \<address> | if (arg1 > arg2) { jump(address) } |
 | 37 | xx10 0101 | jsupe \<arg1> \<arg2> \<address> | if (arg1 >= arg2) { jump(address) } |
 
-Here are more details on how functions operate
-
-special instruction | details
----|---
-`call <function>` | push in the stack the value of the current instruction pointer and jump to the address of the function
-`ret` | pop the value of the instruction pointer when the funcion was called and jump to it
 
 The first two bits of the opcode indicate whether `<arg1>` and `<arg2>` are:
  - Literal values (uint8) if encoded with 1 
@@ -105,6 +103,12 @@ add|int1|int2 1 2 reg0
 ``` 
 where \`|\` is a logic OR that will be understood by the compiler
 
+### Details on how functions calls operates:
+
+special instruction | details
+---|---
+`call <function>` | push in the stack the value of the current instruction pointer and jump to the address of the function
+`ret` | pop the value of the instruction pointer when the funcion was called and jump to it
 ### Source / Destination
 There are 9 different sources or destinations possible :
 | Code | Binary | Assembly | Source / Destination |
