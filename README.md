@@ -23,6 +23,9 @@ I am curently ranked [251/85k](https://turingcomplete.game/leaderboard) on the l
    - [Details on how functions calls operates](#details-on-how-functions-calls-operates)
    - [Source / Destination](#source--destination)
    - [Additional assembly keyword](#additional-assembly-keyword)
+3. [Solving Tower of Hanoi](#solving-tower-of-hanoi)
+   - [Decimal code in memory](#decimal-code-in-memory)
+   - [Assembly code](#assembly-code)
 
 ## My architecture
 <img src="img/circuit_annotated.PNG">
@@ -40,10 +43,12 @@ Each cycle, the counter add 4 to the instruction pointer so that the computer ca
 
 <img src="img/program_annotated.webp">
 
+The next cycle:
+
 <img src="img/next_program_step.webp">
 
 ### Stack
-It is possible to fill the stack using the push instruction and to empty it using the pop instruction. The stack is used to save the instruction pointer during a function call.
+It is possible to fill the stack using the `push` instruction and to empty it using the `pop` instruction. The stack is used to save the instruction pointer during a function `call`.
 <img src="img/stack.webp">
 
 ### Arithmetic logic unit (ALU)
@@ -132,9 +137,8 @@ To modify the first two bits we will use `int1` and `int2` asssembly keyword
 
 So to add 1 and 2 into reg0, the correct instruction is :
 ```asm
-add|int1|int2 1 2 reg0
+add+int1+int2 1 2 reg0
 ``` 
-where \`|\` is a logic OR that will be understood by the compiler
 
 ### Details on how functions calls operates:
 
@@ -164,6 +168,94 @@ There are 9 different sources or destinations possible :
 
 Assembly keyword | Value | Usage
 ---|---|---
-_ | 0 | ignored argument
+null | 0 | ignored argument
 false | 0 | boolean
 true | 1 | boolean
+
+
+## Solving Tower of Hanoi
+
+#### Thanks to my computer, I can solve the following problem :
+
+The first 4 inputs will give you the following in order :
+disk_nr - The highest disk number in the pile (2 to 4)
+source - Which location number to move from
+destination - Where to move the pile to
+spare - the 3rd spot that is neither the source nor the destination
+
+Control the crane with the followin outputs : 
+0 - Move the magnet to spot 0
+1 - Move the magnet to spot 1
+2 - Move the magnet to spot 2
+5 - Toggle the magnet on or off
+
+<img src="img/hanoi.gif" height="400">
+
+### Decimal code in memory
+<img src="img/hanoi_memory.PNG" height="400">
+
+### Assembly code
+
+You can find bellow the complete assembly code. I used two syntactic sugar `const` and `label`.
+
+```asm
+const numdisque reg0
+const src reg1
+const dest reg2
+const reserve reg3
+const swap reg4
+const activate 5
+const desactivate 5
+
+mov stdin null numdisque
+mov stdin null src
+mov stdin null dest
+mov stdin null reserve
+
+call deplacer 
+
+label deplacer
+    push numdisque null null
+    push src null null
+    push dest null null
+    push reserve null null
+    je+int2 numdisque 0 if_equ_0
+    jne+int2 numdisque 0 else
+        label if_equ_0
+        call move_disk
+    jump endif
+    label else
+        minus+int2 numdisque 1 numdisque
+        call swap_dest_reserve
+        call deplacer
+        call swap_dest_reserve
+        call move_disk
+        call swap_reserve_source
+        call deplacer
+    label endif
+    
+    pop null null reserve
+    pop null null dest
+    pop null null src
+    pop null null numdisque
+ret
+
+label move_disk
+    mov src null stdout
+    mov+int1 activate null stdout
+    mov dest null stdout
+    mov+int1 desactivate null stdout
+ret
+
+label swap_dest_reserve
+    mov reserve null swap
+    mov dest null reserve
+    mov swap null dest
+ret
+
+label swap_reserve_source
+    mov reserve null swap
+    mov src null reserve
+    mov swap null src
+ret
+```
