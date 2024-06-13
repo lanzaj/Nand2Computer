@@ -105,7 +105,7 @@ add|int1|int2 1 2 reg0
 ``` 
 where \`|\` is a logic OR that will be understood by the compiler
 
-#### Source / Destination
+### Source / Destination
 There are 9 different sources or destinations possible :
 | Code | Binary | Assembly | Source / Destination |
 |---|---|---|---|
@@ -120,3 +120,11 @@ There are 9 different sources or destinations possible :
 | 8 | 0000 1000 | ram | ram[ramIndex] |
 
 <img src="img/register_annotated.PNG" height="400">
+
+### Additional assembly keyword
+
+Assembly keyword | Value | Usage
+---|---|---
+_ | 0 | ignored argument
+false | 0 | boolean
+true | 1 | boolean
