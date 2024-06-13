@@ -11,6 +11,10 @@ My own computer architecture and assembly language.
 [Turing complete](https://turingcomplete.game) is an educational game focused on computer science. You begin with NAND gates and progressively build other gates like OR, AND, NOT, XOR, etc. Eventually, you create components and, ultimately, a Turing complete architecture with its own assembly language.
 I am curently ranked [251/85k](https://turingcomplete.game/leaderboard) on the leaderboard of Turing complete. [My turing complete profile](https://turingcomplete.game/profile/101858).
 
+The turing complete trailer:
+
+[![Turing complete trailer](https://img.youtube.com/vi/-YY73ejihZo/0.jpg)](https://www.youtube.com/watch?v=-YY73ejihZo)
+
 ## Table of Contents
 
 1. [My architecture](#my-architecture)
