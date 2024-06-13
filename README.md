@@ -3,6 +3,15 @@ My own computer architecture and assembly language.
 
 ![](img/my_8bit_computer.webp)
 
+
+## About this project
+
+[Turing complete](https://turingcomplete.game) is an educational game about computer science. You start with NAND gates, you build other gates like OR, AND, NOT, XOR... Then components and finally a turing complete architecture with its own assembly.
+I am curently ranked [251/85k](https://turingcomplete.game/leaderboard) on the leaderboard of Turing complete.
+
+## My architecture
+<img src="img/circuit_annotated.PNG">
+
 color | purpose
 ---|---
 pink | opcode
@@ -12,19 +21,30 @@ green | dest
 violet | result value
 cyan | instruction pointer
 
-<img src="img/circuit_annotated.PNG" height="400">
+## My assembly
 
-## About this project
-
-[Turing complete](https://turingcomplete.game) is an educational game about computer science. You start with NAND gates, you build other gates like OR, AND, NOT, XOR... Then components and finally a turing complete architecture with its own assembly.
-I am curently ranked [251/85k](https://turingcomplete.game/leaderboard) on the leaderboard of Turing complete.
-
-## Instructions
+### Instructions
 
 An instruction is divided into up to four distinct parts, each encoded with one byte (uint8 ranging from 0 to 255):
 ```asm
 Opcode <arg1> <arg2> <dest>
 ```
+example :
+```asm
+0 1 2 3
+```
+0 corresponds to the instruction `add`\
+1 corresponds to `reg1`\
+2 corresponds to `reg2`\
+3 corresponds to `reg3`\
+So the instruction `0 1 2 3` means `reg3 = reg1 + reg2`
+
+To simplify programming, the compiler will recognize a list of keywords and replace them with their corresponding values. So we will be able to write :
+
+```asm
+add reg1 reg2 reg3
+```
+
 Here is the list of opcodes :
 
 | Opcode | Binary | Assembly | Instruction |
@@ -61,7 +81,31 @@ special instruction | details
 `call <function>` | push in the stack the value of the current instruction pointer and jump to the address of the function
 `ret` | pop the value of the instruction pointer when the funcion was called and jump to it
 
-### Source / Destination
+The first two bits of the opcode indicate whether `<arg1>` and `<arg2>` are:
+ - Literal values (uint8) if encoded with 1 
+- Codes for a register, input, output, or RAM if encoded with 0
+
+| Opcode | arg1 | arg2 |
+|---|---|---|
+|00xx xxxx| memory code | memory code |
+|01xx xxxx| memory code | uint8 value|
+|10xx xxxx| uint8 value| memory code|
+|11xx xxxx| uint8 value| uint8 value|
+
+To modify the first two bits we will use `int1` and `int2` asssembly keyword
+
+| binary | asm |
+|---|---|
+|1000 0000| int1 |
+|0100 0000| int2 |
+
+So to add 1 and 2 into reg0, the correct instruction is :
+```asm
+add|int1|int2 1 2 reg0
+``` 
+where \`|\` is a logic OR that will be understood by the compiler
+
+#### Source / Destination
 There are 9 different sources or destinations possible :
 | Code | Binary | Assembly | Source / Destination |
 |---|---|---|---|
@@ -76,30 +120,3 @@ There are 9 different sources or destinations possible :
 | 8 | 0000 1000 | ram | ram[ramIndex] |
 
 <img src="img/register_annotated.PNG" height="400">
-
-example: an instruction to add `reg0` and `reg1` and store the result in `reg2`
-```asm
-add reg0 reg1 reg2
-```
-The first two bits of the opcode indicate whether `<arg1>` and `<arg2>` are:
- - Literal values (uint8) if encoded with 1 
-- Codes for a register, input, output, or RAM if encoded with 0
-
-| Opcode | arg1 | arg2 |
-|---|---|---|
-|00xx xxxx| memory code | memory code |
-|01xx xxxx| memory code | uint8 value|
-|10xx xxxx| uint8 value| memory code|
-|11xx xxxx| uint8 value| uint8 value|
-
-To modify the first two bits we will use `int1` and `int2`
-
-| binary | asm |
-|---|---|
-|1000 0000| int1 |
-|0100 0000| int2 |
-
-So to add 1 and 2 into reg0, the correct instruction is :
-```asm
-add|int1|int2 1 2 reg0
-``` 
