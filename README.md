@@ -3,6 +3,8 @@ My own computer architecture and assembly language.
 
 ![](img/my_8bit_computer.webp)
 
+![](img/hanoi.gif)
+
 
 ## About this project
 
