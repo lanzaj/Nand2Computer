@@ -9,9 +9,50 @@ My own computer architecture and assembly language.
 [Turing complete](https://turingcomplete.game) is an educational game focused on computer science. You begin with NAND gates and progressively build other gates like OR, AND, NOT, XOR, etc. Eventually, you create components and, ultimately, a Turing complete architecture with its own assembly language.
 I am curently ranked [251/85k](https://turingcomplete.game/leaderboard) on the leaderboard of Turing complete. [My turing complete profile](https://turingcomplete.game/profile/101858).
 
+## Table of Contents
+
+1. [My architecture](#my-architecture)
+   - [Memory](#memory)
+   - [Program](#program)
+   - [Stack](#stack)
+   - [Arithmetic logic unit (ALU)](#arithmetic-logic-unit-alu)
+   - [Operation codes (opcode)](#operation-codes-opcode)
+2. [My assembly](#my-assembly)
+   - [Instructions](#instructions)
+   - [Opcodes](#opcodes)
+   - [Details on how functions calls operates](#details-on-how-functions-calls-operates)
+   - [Source / Destination](#source--destination)
+   - [Additional assembly keyword](#additional-assembly-keyword)
+
 ## My architecture
 <img src="img/circuit_annotated.PNG">
 
+### Memory
+
+Each registers, the ramIndex register, the input / output components can take a value from 0 to 255 (uint8). The program memory area, the ram and the stack can take 256 values that range from 0 to 255.
+
+<img src="img/register_annotated.PNG" height="400">
+
+
+### Program
+
+Each cycle, the counter add 4 to the instruction pointer so that the computer can execute the next instruction. The value of the instruction pointer can be forced with a jump, jne, je, jsup, jsupe, jinf or jinfe instruction.
+
+<img src="img/program_annotated.webp">
+
+<img src="img/next_program_step.webp">
+
+### Stack
+It is possible to fill the stack using the push instruction and to empty it using the pop instruction. The stack is used to save the instruction pointer during a function call.
+<img src="img/stack.webp">
+
+### Arithmetic logic unit (ALU)
+The arithmetic logic unit (ALU) is a combinational digital circuit that performs arithmetic and bitwise operations on integer binary numbers. The inputs to an ALU are the data to be operated on, called operands, and a code indicating the operation to be performed; the ALU's output is the result of the performed operation. 
+
+<img src="img/ALU.webp">
+
+### Operation codes (opcode)
+<img src="img/opcode.webp">
 
 ## My assembly
 
@@ -115,7 +156,9 @@ There are 9 different sources or destinations possible :
 | 7 | 0000 0111 | stdin / stdout | input / output |
 | 8 | 0000 1000 | ram | ram[ramIndex] |
 
+<details>
 <img src="img/register_annotated.PNG" height="400">
+</details>
 
 ### Additional assembly keyword
 
